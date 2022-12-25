@@ -1,0 +1,21 @@
+{
+  "name": "monorepo-project",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "dev:ha": "yarn workspace health-app start",
+    "dev:uc": "yarn workspace ui-components dev",
+    "build:uc": "yarn workspace ui-components build",
+    "start": "lerna exec --stream --concurrency=999 -- yarn start"
+  },
+  "repository": "git@github.com:nhan1303/health-app.git",
+  "author": "Nhan Nguyen <nhan1303@gmail.com>",
+  "devDependencies": {
+    "lerna": "^6.1.0"
+  }
+}
