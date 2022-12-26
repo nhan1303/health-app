@@ -2,23 +2,21 @@ import { AxiosError } from "axios";
 import { commonActions } from "modules/domains/common/commonSlice";
 import { useQuery } from "react-query";
 import { useDispatch } from "react-redux";
+import myRecordApi from "../myRecordApi";
+import { myRecordActions } from "modules/domains/my-record/myRecordSlice";
 
-import columnApi from "../columnApi";
-import { columnActions } from "../columnSlice";
-import { IColumnParams } from "../types";
+export interface IuseGetMyRecommendProps {}
 
-export interface IuseGetColumnListProps {}
-
-export const useGetColumnList = (params: IColumnParams) => {
+export const useGetMyRecommend = () => {
   const dispatch = useDispatch();
 
   const fetchData = async () => {
     dispatch(commonActions.setLoading(true));
-    const res = await columnApi.getColumns(params);
+    const res = await myRecordApi.getMyRecommend({});
     return res.data;
   };
 
-  return useQuery(["columns", params], fetchData, {
+  return useQuery(["my-recommend"], fetchData, {
     onSettled: () => {
       dispatch(commonActions.setLoading(false));
     },
@@ -26,9 +24,8 @@ export const useGetColumnList = (params: IColumnParams) => {
       dispatch(commonActions.setError(error.message));
     },
     onSuccess(res) {
-      if (res?.data) {
-        dispatch(columnActions.setData(res.data));
-        dispatch(columnActions.setPageInfo(res.pageInfo));
+      if (res) {
+        dispatch(myRecordActions.setMyRecommendData(res));
       }
     },
     refetchOnWindowFocus: false,

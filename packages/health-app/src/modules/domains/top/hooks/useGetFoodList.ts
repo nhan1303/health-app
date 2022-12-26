@@ -30,5 +30,6 @@ export const useGetFoodList = (params: IFoodParams) => {
         dispatch(topActions.setFoodPageInfo(res.pageInfo));
       }
     },
+    refetchOnWindowFocus: false,
   });
 };
