@@ -11,3 +11,4 @@ export * from "./MenuList";
 export * from "./MenuItem";
 export * from "./Snackbar";
 export * from "./ImageListItem";
+export * from "./Divider";
