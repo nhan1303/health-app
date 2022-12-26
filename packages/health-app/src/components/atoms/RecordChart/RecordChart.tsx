@@ -10,12 +10,14 @@ export interface IRecordChartProps {
   headerContent?: React.ReactNode;
   footerContent?: React.ReactNode;
   sx?: SxProps<Theme>;
+  chartBackground?: string;
 }
 
 export const RecordChart: React.FC<IRecordChartProps> = ({
   data,
   headerContent,
   footerContent,
+  chartBackground,
   sx,
 }) => {
   const theme = useTheme();
@@ -58,7 +60,7 @@ export const RecordChart: React.FC<IRecordChartProps> = ({
         display: false,
       },
       CustomCanvasBackgroundColor: {
-        color: theme.palette.dark[600],
+        color: chartBackground || theme.palette.dark[600],
       },
     },
   };

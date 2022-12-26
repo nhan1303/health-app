@@ -28,5 +28,6 @@ export const useGetBodyFatPercentageData = () => {
         dispatch(topActions.setBodyFatPercentage(res));
       }
     },
+    refetchOnWindowFocus: false,
   });
 };

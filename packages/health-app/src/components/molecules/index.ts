@@ -6,3 +6,5 @@ export * from "./ProtectedRoute";
 export * from "./CircularProgressBar";
 export * from "./HexagonItem";
 export * from "./RecommendCard";
+export * from "./TitleHeader";
+export * from "./BodyRecordFooter";

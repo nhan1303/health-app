@@ -28,5 +28,6 @@ export const useGetProgress = () => {
         dispatch(topActions.setProgressData(res));
       }
     },
+    refetchOnWindowFocus: false,
   });
 };
