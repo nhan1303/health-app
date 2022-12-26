@@ -10,3 +10,4 @@ export * from "./Popover";
 export * from "./MenuList";
 export * from "./MenuItem";
 export * from "./Snackbar";
+export * from "./ImageListItem";

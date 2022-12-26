@@ -4,7 +4,7 @@ import { apiURL, sleep } from "utils";
 const handlers = [
   rest.post(apiURL("/login"), async (req, res, ctx) => {
     const { username } = await req.json();
-    await sleep(2000);
+    await sleep();
 
     return res(
       ctx.status(200),
@@ -20,7 +20,7 @@ const handlers = [
   }),
 
   rest.post(apiURL("/logout"), async (req, res, ctx) => {
-    await sleep(2000);
+    await sleep();
     return res(
       ctx.status(200),
       ctx.json({
