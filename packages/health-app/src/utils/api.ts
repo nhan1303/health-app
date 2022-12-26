@@ -1,4 +1,4 @@
-export const sleep = (ms: number) =>
+export const sleep = (ms: number = 1000) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
 export const apiURL = (path: string) => {

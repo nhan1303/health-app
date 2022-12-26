@@ -35,7 +35,7 @@ function App() {
           anchorOrigin={{ vertical: "top", horizontal: "right" }}
           key="top right"
           open={!!error}
-          // autoHideDuration={1000}
+          autoHideDuration={6000}
         >
           <Alert sx={{ width: "100%" }} severity="error">
             {error}
