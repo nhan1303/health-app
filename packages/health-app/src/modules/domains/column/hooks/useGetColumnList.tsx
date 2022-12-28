@@ -5,7 +5,8 @@ import { useDispatch } from "react-redux";
 
 import columnApi from "../columnApi";
 import { columnActions } from "../columnSlice";
-import { IColumnParams } from "../types";
+import { transformList } from "../transformers/columnTransformer";
+import { IColumn, IColumnParams, IColumnResponse } from "../types";
 
 export interface IuseGetColumnListProps {}
 
@@ -19,6 +20,10 @@ export const useGetColumnList = (params: IColumnParams) => {
   };
 
   return useQuery(["columns", params], fetchData, {
+    // select(data: IColumnResponse[]): IColumn[] {
+    //   // transforms data while getting from react-query cached
+    //   return transformList(data);
+    // },
     onSettled: () => {
       dispatch(commonActions.setLoading(false));
     },
@@ -26,8 +31,11 @@ export const useGetColumnList = (params: IColumnParams) => {
       dispatch(commonActions.setError(error.message));
     },
     onSuccess(res) {
-      if (res?.data) {
-        dispatch(columnActions.setData(res.data));
+      if (res && Array.isArray(res.data)) {
+        const responseData: IColumnResponse[] = res.data;
+        const formattedData: IColumn[] = transformList(responseData);
+
+        dispatch(columnActions.setData(formattedData));
         dispatch(columnActions.setPageInfo(res.pageInfo));
       }
     },

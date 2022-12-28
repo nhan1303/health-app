@@ -3,6 +3,13 @@ export interface IColumnParams {
   limit: number;
 }
 
+export interface IColumnResponse {
+  id: string;
+  imgUrl: string;
+  dateTime: string;
+  title: string;
+  tags: string[];
+}
 export interface IColumn {
   id: string;
   imgUrl: string;

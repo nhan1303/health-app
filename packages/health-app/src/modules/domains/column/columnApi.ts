@@ -1,16 +1,16 @@
 import axiosClient from "modules/api/axiosClient";
 import { APIResponse, IListResponse } from "modules/api/types";
-import { IColumn, IColumnParams } from "./types";
+import { IColumnParams, IColumnResponse } from "./types";
 
 class ColumnApi {
   getColumns(params: IColumnParams) {
     const url = "/columns";
-    return axiosClient.get<IColumnParams, APIResponse<IListResponse<IColumn>>>(
-      url,
-      {
-        params,
-      }
-    );
+    return axiosClient.get<
+      IColumnParams,
+      APIResponse<IListResponse<IColumnResponse>>
+    >(url, {
+      params,
+    });
   }
 }
 
